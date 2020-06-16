@@ -1,8 +1,8 @@
 {
   "name": "logger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "logger",
-  "author": "Markus Fürer",
+  "author": "Markus Fuerer",
   "license": "ISC",
   "repository": {
     "type": "git",
