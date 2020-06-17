@@ -1,13 +1,6 @@
 {
   "name": "logger",
   "version": "1.0.2",
-  "description": "logger",
-  "author": "Markus Fuerer",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "github:kusigit/logger"
-  },
   "dependencies": {
     "@sendgrid/mail": "7.1.1"
   }
