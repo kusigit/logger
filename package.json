@@ -1,6 +1,6 @@
 {
   "name": "logger",
-  "version": "1.0.2",
+  "version": "0.0.1",
   "dependencies": {
     "@sendgrid/mail": "7.1.1"
   }
