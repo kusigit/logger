@@ -41,6 +41,9 @@ const logError = (text) => {
 };
 
 const send = (text) => {
+  
+  console.log('NODE_ENV', process.env.NODE_ENV);
+  
   if (process.env.NODE_ENV === 'production') {
     text = typeof text === 'object' ? JSON.stringify(text, null, 2) : text;
 
@@ -51,6 +54,8 @@ const send = (text) => {
       text: text,
     };
 
+    console.log('message', message);
+    
     sgMail.send(message);
   }
 };
