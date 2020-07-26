@@ -42,7 +42,7 @@ const logError = (text) => {
 
 const send = (text) => {
   
-  console.log('NODE_ENV', process.env.NODE_ENV);
+  console.log('NODE_ENV', process.env);
   
   if (process.env.NODE_ENV === 'production') {
     text = typeof text === 'object' ? JSON.stringify(text, null, 2) : text;
@@ -61,8 +61,8 @@ const send = (text) => {
 };
 
 module.exports = {
-  logToFile: logToFile,
-  logInfo: logInfo,
-  logError: logError,
-  send: send,
+  logToFile,
+  logInfo,
+  logError,
+  send,
 };
