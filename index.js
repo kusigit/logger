@@ -41,11 +41,10 @@ const logError = (text) => {
 };
 
 const send = (text) => {
+  text = typeof text === 'object' ? JSON.stringify(text, null, 2) : text;
   console.log(text);
   
   if (process.env.NODE_ENV === 'production') {
-    text = typeof text === 'object' ? JSON.stringify(text, null, 2) : text;
-
     const message = {
       from: process.env.EMAIL_FROM,
       to: process.env.EMAIL_TO,
