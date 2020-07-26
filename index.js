@@ -40,7 +40,9 @@ const logError = (text) => {
   send(text);
 };
 
-const send = (text) => {  
+const send = (text) => {
+  console.log(text);
+  
   if (process.env.NODE_ENV === 'production') {
     text = typeof text === 'object' ? JSON.stringify(text, null, 2) : text;
 
