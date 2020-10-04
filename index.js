@@ -1,30 +1,13 @@
 'use strict';
 
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const Mailgun = require('mailgun-js');
 
-// const text = '';
-/*
-const begin = (text) => {
-  this.text = '';
-  this.append(text);
-};
+const mailgun = new Mailgun({
+  apiKey: process.env.MAILGUN_API_KEY,
+  domain: process.env.MAILGUN_DOMAIN,
+  host: process.env.MAILGUN_HOST,
+});
 
-const append = (text) => {
-  console.log(text);
-  this.text += text;
-  this.text += '\n';
-};
-
-const end = (text) => {
-  this.append(text);
-  this.send(this.text);
-};
-
-const logIn = (text) => {
-  console.log(text);
-};
-*/
 const logToFile = (path, text) => {
   const fs = require('fs').promises;
   return fs.writeFile(`./log/${path}`, text, {flag: 'w+'});
@@ -40,23 +23,23 @@ const logError = (text) => {
   send(text);
 };
 
-const send = (text) => {
-  
-  console.log('NODE_ENV', process.env);
-  
-  if (process.env.NODE_ENV === 'production') {
+const send = async (text) => {
+  try {
     text = typeof text === 'object' ? JSON.stringify(text, null, 2) : text;
 
-    const message = {
+    const data = {
       from: process.env.EMAIL_FROM,
       to: process.env.EMAIL_TO,
       subject: process.env.EMAIL_SUBJECT,
       text: text,
     };
 
-    console.log('message', message);
-    
-    sgMail.send(message);
+    console.log('message', data);
+
+    const body = await mailgun.messages().send(data);
+    console.log(body);
+  } catch (e) {
+    console.error(e);
   }
 };
 
