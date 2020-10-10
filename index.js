@@ -23,7 +23,7 @@ const logError = (text) => {
   send(text);
 };
 
-const send = async (text) => {
+const send = (text) => {
   try {
     text = typeof text === 'object' ? JSON.stringify(text, null, 2) : text;
 
@@ -36,8 +36,7 @@ const send = async (text) => {
 
     console.log('message', data);
 
-    const body = await mailgun.messages().send(data);
-    console.log(body);
+    return mailgun.messages().send(data);
   } catch (e) {
     console.error(e);
   }
