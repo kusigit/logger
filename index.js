@@ -20,7 +20,7 @@ const logInfo = (...text) => {
 
 const logError = (text) => {
   console.error(text);
-  send(text);
+  return send(text);
 };
 
 const send = (text) => {
