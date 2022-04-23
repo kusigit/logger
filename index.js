@@ -36,7 +36,9 @@ const send = (text) => {
 
     console.log('message', data);
 
-    return mailgun.messages().send(data);
+    if (data.to) {
+      return mailgun.messages().send(data);
+    }
   } catch (e) {
     console.error(e);
   }
